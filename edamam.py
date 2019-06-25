@@ -25,7 +25,7 @@ class RecipeSearch:
         self._request = requests.get(self.urlbase, params=self.parameters)
         hits = self._request.json()["hits"]
         result = DynamicArray()
-        print(hits)
+       # print(hits)
         for hit in hits:
             result.append(Recipe(hit["recipe"]))
         return result
@@ -119,10 +119,3 @@ class Nutrient:
         string = ""
         string += self.source['label'] + ":" + str(round(self.source['quantity'], 2))
         return string
-
-
-if __name__ == "__main__":
-    to = 5
-    dish = "apple cake"
-    test = RecipeSearch({"q": dish, "to": to}).recipe_results()
-    print(test)
