@@ -22,7 +22,10 @@ class RecipeSearch:
         Get the recipe according to the request
         :return: list of all recipes
         """
-        self.request = requests.get(self.urlbase, params=self.parameters)
+        try:
+            self.request = requests.get(self.urlbase, params=self.parameters)
+        except requests.exceptions.RequestException as e:
+            print(e)
         hits = self.request.json()["hits"]
         result = DynamicArray()
        # print(hits)
