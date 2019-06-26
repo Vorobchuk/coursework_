@@ -14,7 +14,7 @@ class RecipeSearch:
         self.parameters = parameters
         self.parameters["app_id"] = get_id()
         self.parameters["app_key"] = get_key()
-        self._request = None
+        self.request = None
         self.urlbase = "https://api.edamam.com/search"
 
     def recipe_results(self):
@@ -22,12 +22,12 @@ class RecipeSearch:
         Get the recipe according to the request
         :return: list of all recipes
         """
-        self._request = requests.get(self.urlbase, params=self.parameters)
-        hits = self._request.json()["hits"]
+        self.request = requests.get(self.urlbase, params=self.parameters)
+        hits = self.request.json()["hits"]
         result = DynamicArray()
        # print(hits)
-        for hit in hits:
-            result.append(Recipe(hit["recipe"]))
+        for i in hits:
+            result.append(Recipe(i["recipe"]))
         return result
 
 
