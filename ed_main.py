@@ -19,6 +19,7 @@ test = RecipeSearch({"q": dish, "to": to}).recipe_results()
 
 
 def to_print(i):
+    """Print main information"""
     print("Click here to learn more:  " + i.url)
     print("Name: " + i.label)
     print("Calories: " + str(round(i.calories, 2)))
@@ -36,6 +37,7 @@ def to_print(i):
 
 
 def main():
+    """This is the main function"""
     hl = "health labels: [Alcohol-Free, Fish-Free, Low-Sugar, Peanut-Free, Soy-Free, Vegan, Vegetarian]"
     d = "diets: [High-Fiber, High-Protein, Low-Carb, Low-Fat, Balanced]"
     try:
